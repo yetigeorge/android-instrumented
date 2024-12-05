@@ -71,4 +71,15 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.textToBeChanged))
             .check(matches(withText("abcdef")))
     }
+
+    @Test
+    fun enterAbcdefAndOpenActivityAndChangeText() {
+        ActivityScenario.launch(MainActivity::class.java)
+        onView(withId(R.id.editTextUserInput))
+            .perform(replaceText("abcdef"))
+        onView(withId(R.id.activityChangeTextBtn))
+            .perform(click())
+        onView(withId(R.id.show_text_view))
+            .check(matches(withText("abcdef")))
+    }
 }
