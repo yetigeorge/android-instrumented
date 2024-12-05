@@ -20,4 +20,15 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.textToBeChanged))
             .check(matches(withText(R.string.hello_world)))
     }
+
+    @Test
+    fun enter123AndChangeText() {
+        ActivityScenario.launch(MainActivity::class.java)
+        onView(withId(R.id.editTextUserInput))
+            .perform(replaceText("123"))
+        onView(withId(R.id.changeTextBt))
+            .perform(click())
+        onView(withId(R.id.textToBeChanged))
+            .check(matches(withText("123")))
+    }
 }
