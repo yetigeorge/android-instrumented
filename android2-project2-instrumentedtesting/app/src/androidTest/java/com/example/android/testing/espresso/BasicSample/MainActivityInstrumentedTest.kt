@@ -51,4 +51,13 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.textToBeChanged))
             .check(matches(withText("")))
     }
+
+    @Test
+    fun noTextAndOpenActivityAndChangeText() {
+        ActivityScenario.launch(MainActivity::class.java)
+        onView(withId(R.id.activityChangeTextBtn))
+            .perform(click())
+        onView(withId(R.id.show_text_view))
+            .check(matches(withText("")))
+    }
 }
