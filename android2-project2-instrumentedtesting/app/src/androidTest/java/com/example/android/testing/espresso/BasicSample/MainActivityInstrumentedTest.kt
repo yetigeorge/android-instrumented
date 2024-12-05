@@ -82,4 +82,12 @@ class MainActivityInstrumentedTest {
         onView(withId(R.id.show_text_view))
             .check(matches(withText("abcdef")))
     }
+
+    @Test
+    fun validateCorrectStringsInShowTextActivity() {
+        val intent = ShowTextActivity.newStartIntent(ApplicationProvider.getApplicationContext(), "Test String")
+        ActivityScenario.launch<ShowTextActivity>(intent)
+        onView(withId(R.id.show_text_view))
+            .check(matches(withText("Test String")))
+    }
 }
