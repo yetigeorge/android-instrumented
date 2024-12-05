@@ -14,5 +14,10 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class MainActivityInstrumentedTest {
 
-    
+    @Test
+    fun validateTextView() {
+        ActivityScenario.launch(MainActivity::class.java)
+        onView(withId(R.id.textToBeChanged))
+            .check(matches(withText(R.string.hello_world)))
+    }
 }
